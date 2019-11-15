@@ -1,13 +1,16 @@
 import tkinter as tk
 from tkinter import font
-from a import *
+from b import *
 
 def test_function():
 	
 	a = OptionList[variable.get()]
 	b = OptionList1[variable1.get()]
+
+	z = variable.get()
+
 	
-	label['text'] = pre(a,b) 
+	label['text'] = pre(a,b,z) 
 
 
 root = tk.Tk()
@@ -105,7 +108,7 @@ button.place(relx=0.36,rely=0.4,relheight=0.07,relwidth=0.3)
 lower_frame =tk.Frame(root,bg='#80c1ff',bd =10)
 lower_frame.place(relx=0.5,rely=0.5,relwidth=0.75,relheight=0.4,anchor='n')
 
-label = tk.Label(lower_frame,font=('Courier','20'))
+label = tk.Label(lower_frame,font=('Courier','14'),anchor = 'nw',justify = 'left',bd=4)
 label.place(relwidth=1,relheight=1)
 # start the GUI 
 root.mainloop() 

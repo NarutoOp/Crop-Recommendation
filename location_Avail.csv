@@ -1,0 +1,31 @@
+SOIL,STATE,Rice,Cotton,Sugarcane,Wheat,Millets,Cardamom,Ginger,Coconut,Orange,Soyabean,Maize
+Aluvial,Maharashtra,1,0,0,1,0,0,0,0,0,0,0
+Black,Maharashtra,0,1,0,0,0,0,0,0,0,0,0
+Red,Maharashtra,0,0,1,0,0,0,0,0,0,0,0
+Laterite,Maharashtra,0,0,0,0,1,0,0,0,0,0,0
+Mountain,Maharashtra,0,0,0,0,0,0,0,0,0,0,0
+Desert,Maharashtra,0,0,0,0,0,0,0,0,0,0,0
+Aluvial,Kerela,1,0,0,0,0,0,0,0,0,0,0
+Black,Kerela,0,0,0,0,0,0,0,0,0,0,0
+Red,Kerela,0,0,1,0,0,0,0,0,0,0,0
+Laterite,Kerela,0,0,0,0,0,0,1,0,0,0,0
+Mountain,Kerela,0,0,0,0,0,0,0,1,0,0,0
+Desert,Kerela,0,0,0,0,0,1,0,0,0,0,0
+Aluvial,Sikkim,1,0,0,1,0,0,0,0,0,0,0
+Black,Sikkim,0,0,0,0,0,0,0,0,0,0,0
+Red,Sikkim,0,0,0,0,0,0,0,0,0,0,0
+Laterite,Sikkim,0,0,0,0,1,0,0,0,0,0,0
+Mountain,Sikkim,0,0,0,0,0,0,0,0,1,0,0
+Desert,Sikkim,0,0,0,0,0,1,0,0,0,0,0
+Aluvial,Uttarakhand,1,0,1,0,0,0,0,0,0,0,0
+Black,Uttarakhand,0,1,0,0,0,0,0,0,0,1,0
+Red,Uttarakhand,0,0,0,0,0,0,0,0,0,0,0
+Laterite,Uttarakhand,0,0,0,0,1,0,0,0,0,0,0
+Mountain,Uttarakhand,0,0,0,0,0,0,0,0,0,0,0
+Desert,Uttarakhand,0,0,0,0,0,0,0,0,0,0,0
+Aluvial,Jammu and Kashimir,1,0,1,0,0,0,0,0,0,0,0
+Black,Jammu and Kashimir,0,1,0,0,0,0,0,0,0,0,0
+Red,Jammu and Kashimir,0,0,0,0,0,0,0,0,0,0,0
+Laterite,Jammu and Kashimir,0,0,0,0,1,0,0,0,0,0,0
+Mountain,Jammu and Kashimir,0,0,0,0,0,0,0,0,0,0,0
+Desert,Jammu and Kashimir,0,0,0,0,0,0,0,0,1,0,0
