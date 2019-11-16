@@ -1,13 +1,12 @@
 def pre(a,b):
 	import pandas as pd
+	from sklearn import preprocessing
 	from sklearn.model_selection import train_test_split
 	from sklearn.tree import DecisionTreeClassifier
 	from sklearn.linear_model import LinearRegression
-	from sklearn.metrics import confusion_matrix
-	from sklearn.metrics import accuracy_score
-	from sklearn.metrics import classification_report
+	from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
+	 
 	data=pd.read_csv("cropdata.csv",index_col=0)
-	from sklearn import preprocessing
 	le = preprocessing.LabelEncoder()
 	x1=data["State"]
 	y1=data["Soil"]
@@ -23,4 +22,6 @@ def pre(a,b):
 	classifier.fit(X_train,Y_train)
 	c = classifier.predict([[a,b,'3']])
 	final_str = 'City : %s'%(c)
+
+	#EXIT
 	return final_str

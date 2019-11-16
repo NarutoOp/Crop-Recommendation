@@ -1,9 +1,10 @@
 def pre(a,b):
 	import pandas as pd
+	from sklearn import preprocessing
 	import matplotlib.pyplot as plt
 	from sklearn.tree import DecisionTreeClassifier
-	from sklearn import preprocessing
 	from sklearn.linear_model import LinearRegression
+
 	basic=pd.read_csv('location_Avail.csv')
 	le = preprocessing.LabelEncoder()
 	x1 = basic["SOIL"]
@@ -42,6 +43,7 @@ def pre(a,b):
 def cropname(c,a):
 	import pandas as pd
 	from sklearn.linear_model import LinearRegression
+	
 	location = a
 
 	rice_predict_yeild = ""
@@ -314,7 +316,7 @@ def cropname(c,a):
 
 
 
-	#diplaying the prediction data (for RICE)
+	#displaying the prediction data (for RICE)
 	if rice_predict_yeild != "" :
 	    A.append(rice_predict_yeild)
 	if rice_predict_profit != "" :

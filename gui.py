@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import font
+#from tkinter import font //NOT NEEDED SINCE TKINTER IS IMPORTED AS A WHOLE
 from b import *
 
 def test_function():
