@@ -1,4 +1,4 @@
-def pre(a,b,z):
+def pre(a,b):
 	import pandas as pd
 	import matplotlib.pyplot as plt
 	from sklearn.tree import DecisionTreeClassifier
@@ -10,13 +10,20 @@ def pre(a,b,z):
 	y1 = basic["STATE"]
 	x = le.fit_transform(x1)
 	y = le.fit_transform(y1)
+
+	location = a
+	soil = b
+
 	basic1 = basic.merge(pd.DataFrame({'SOIL_C':x,'STATE_C':y}),right_index=True,left_index = True)
+	ordinary=basic1.query('STATE == @location and SOIL == @soil')
+	Z = ordinary[['STATE_C','SOIL_C']].values
+
 	X = basic1[['STATE_C','SOIL_C']]
 	Y = basic1[['Rice','Cotton','Sugarcane','Wheat','Millets','Cardamom','Ginger','Coconut']]	
 	classifier = DecisionTreeClassifier()
 	classifier.fit(X,Y)	
-	c = classifier.predict([[a,b]])
-	d = cropname(c,z)
+	c = classifier.predict(Z)
+	d = cropname(c,a)
 	if len(d)==1:
 		final_str = '%s : \nCurrent Year Yield : %s \nCurrent Year Profit : %s \nCurrent Year Cost : %s\n' %(str(d[0][0]),d[0][1],d[0][2],d[0][3])
 		return final_str
@@ -26,13 +33,16 @@ def pre(a,b,z):
 	elif len(d)==3:
 		final_str = '%s : \nCurrent Year Yield : %s \nCurrent Year Profit : %s \nCurrent Year Cost : %s\n%s : \nCurrent Year Yield : %s \nCurrent Year Profit : %s \nCurrent Year Cost : %s\n%s : \nCurrent Year Yield : %s \nCurrent Year Profit : %s \nCurrent Year Cost : %s\n' %(str(d[0][0]),d[0][1],d[0][2],d[0][3],str(d[1][0]),d[1][1],d[1][2],d[1][3],str(d[2][0]),d[2][1],d[2][2],d[2][3])
 		return final_str
+	else:
+		final_str = 'No crops available with this match'
+		return final_str
 
 
 
-def cropname(c,z):
+def cropname(c,a):
 	import pandas as pd
 	from sklearn.linear_model import LinearRegression
-	location = z
+	location = a
 
 	rice_predict_yeild = ""
 	rice_predict_profit = ""
@@ -86,15 +96,15 @@ def cropname(c,z):
 	        	#predection of yeild
 	        	regressor.fit(X,Y)
 	        	#a1=regressor.score(X,Y)*100
-	        	rice_predict_yeild = regressor.predict([[2018]])
+	        	rice_predict_yeild = regressor.predict([[2019]])
 	        	#predection of profit
 	        	regressor.fit(X,Z)
 	        	#b1=regressor.score(X,Z)*100
-	        	rice_predict_profit = regressor.predict([[2018]])
+	        	rice_predict_profit = regressor.predict([[2019]])
 	        	#prediction of cost of cultivation
 	        	regressor.fit(X,W)
 	        	#c1=regressor.score(X,W)*100
-	        	rice_predict_cost = regressor.predict([[2018]])           
+	        	rice_predict_cost = regressor.predict([[2019]])           
 	        elif i == 1:
 	            B = []
 	            B.append("Cotton")
@@ -109,17 +119,17 @@ def cropname(c,z):
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
 	            
-	            cotton_predict_yeild = regressor.predict([[2018]])
+	            cotton_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
 	            
-	            cotton_predict_profit = regressor.predict([[2018]])
+	            cotton_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            cotton_predict_cost = regressor.predict([[2018]])
+	            cotton_predict_cost = regressor.predict([[2019]])
 	        elif i == 2:
 	            C = []
-	            C.append("Cotton")
+	            C.append("Sugarcane")
 	            
 	            arr.append(C)
 	            data = pd.read_csv('cropdata.csv')
@@ -131,13 +141,13 @@ def cropname(c,z):
 	            W=data3['COST OF CULTIVATION']
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
-	            sugarcane_predict_yeild = regressor.predict([[2018]])
+	            sugarcane_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
-	            sugarcane_predict_profit = regressor.predict([[2018]])
+	            sugarcane_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            sugarcane_predict_cost = regressor.predict([[2018]])
+	            sugarcane_predict_cost = regressor.predict([[2019]])
 	        elif i == 3:
 	        	D = []
 	        	D.append("Wheat")
@@ -151,13 +161,13 @@ def cropname(c,z):
 	        	W=data4['COST OF CULTIVATION']
 	        	#prediction of yeild
 	        	regressor.fit(X,Y)
-	        	wheat_predict_yeild = regressor.predict([[2018]])
+	        	wheat_predict_yeild = regressor.predict([[2019]])
 	        	#prediction of the profit
 	        	regressor.fit(X,Z)
-	        	wheat_predict_profit = regressor.predict([[2018]])
+	        	wheat_predict_profit = regressor.predict([[2019]])
 	        	#prediction of cost of cultivation
 	        	regressor.fit(X,W)
-	        	wheat_predict_cost = regressor.predict([[2018]])
+	        	wheat_predict_cost = regressor.predict([[2019]])
 	        elif i == 4:
 	            E = []
 	            E.append("Millets")
@@ -171,13 +181,13 @@ def cropname(c,z):
 	            W=data5['COST OF CULTIVATION']
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
-	            millets_predict_yeild = regressor.predict([[2018]])
+	            millets_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
-	            millets_predict_profit = regressor.predict([[2018]])
+	            millets_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            millets_predict_cost = regressor.predict([[2018]])
+	            millets_predict_cost = regressor.predict([[2019]])
 	        elif i == 5:
 	            F = []
 	            F.append("Cardamom")
@@ -192,13 +202,13 @@ def cropname(c,z):
 	            W=data6['COST OF CULTIVATION']
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
-	            carda_predict_yeild = regressor.predict([[2018]])
+	            carda_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
-	            carda_predict_profit = regressor.predict([[2018]])
+	            carda_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            carda_predict_cost = regressor.predict([[2018]])
+	            carda_predict_cost = regressor.predict([[2019]])
 	        elif i == 6:
 	            G = []
 	            G.append("Ginger")
@@ -212,13 +222,13 @@ def cropname(c,z):
 	            W=data7['COST OF CULTIVATION']
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
-	            gin_predict_yeild = regressor.predict([[2018]])
+	            gin_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
-	            gin_predict_profit = regressor.predict([[2018]])
+	            gin_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            gin_predict_cost = regressor.predict([[2018]])
+	            gin_predict_cost = regressor.predict([[2019]])
 	        elif i == 7:
 	            H = []
 	            H.append("Coconut")
@@ -233,13 +243,13 @@ def cropname(c,z):
 	            W=data8['COST OF CULTIVATION']
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
-	            coco_predict_yeild = regressor.predict([[2018]])
+	            coco_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
-	            coco_predict_profit = regressor.predict([[2018]])
+	            coco_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            coco_predict_cost = regressor.predict([[2018]])
+	            coco_predict_cost = regressor.predict([[2019]])
 	        elif i == 8:
 	            I = []
 	            I.append("Orange")
@@ -253,13 +263,13 @@ def cropname(c,z):
 	            W=data9['COST OF CULTIVATION']
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
-	            orange_predict_yeild = regressor.predict([[2018]])
+	            orange_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
-	            orange_predict_profit = regressor.predict([[2018]])
+	            orange_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            orange_predict_cost = regressor.predict([[2018]])
+	            orange_predict_cost = regressor.predict([[2019]])
 	        elif i == 9:
 	            J = []
 	            J.append("SOYABEAN")
@@ -273,13 +283,13 @@ def cropname(c,z):
 	            W=data10['COST OF CULTIVATION']
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
-	            soya_predict_yeild = regressor.predict([[2018]])
+	            soya_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
-	            soya_predict_profit = regressor.predict([[2018]])
+	            soya_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            soya_predict_cost = regressor.predict([[2018]])
+	            soya_predict_cost = regressor.predict([[2019]])
 	        elif i == 10:
 	            K = []
 	            K.append("Maize")
@@ -294,13 +304,13 @@ def cropname(c,z):
 	            W=data11['COST OF CULTIVATION']
 	            #prediction of the yeild
 	            regressor.fit(X,Y)
-	            mai_predict_yeild = regressor.predict([[2018]])
+	            mai_predict_yeild = regressor.predict([[2019]])
 	            #prediction of the profit
 	            regressor.fit(X,Z)
-	            mai_predict_profit = regressor.predict([[2018]])
+	            mai_predict_profit = regressor.predict([[2019]])
 	            #prediction of cost of cultivation
 	            regressor.fit(X,W)
-	            mai_predict_cost = regressor.predict([[2018]])
+	            mai_predict_cost = regressor.predict([[2019]])
 
 
 

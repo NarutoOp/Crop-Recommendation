@@ -4,13 +4,13 @@ from b import *
 
 def test_function():
 	
-	a = OptionList[variable.get()]
-	b = OptionList1[variable1.get()]
+	a = variable.get()
+	b = variable1.get()
 
-	z = variable.get()
+	# z = variable.get()
 
 	
-	label['text'] = pre(a,b,z) 
+	label['text'] = pre(a,b) 
 
 
 root = tk.Tk()
@@ -74,17 +74,17 @@ opt.place(relx=0.1,rely=0.1,relwidth=0.8,relheight=0.8)
 labelTest = tk.Label(text="", font=('Helvetica', 12), fg='red')
 labelTest.pack(side="top")
 
-def callback(*args):
-    labelTest.configure(text="The selected item is {}".format(variable.get()))
-    # return variable.get()
+# def callback(*args):
+#     labelTest.configure(text="The selected item is {}".format(variable.get()))
+#     # return variable.get()
 
-variable.trace("w", callback)
+# variable.trace("w", callback)
 
 frame1 = tk.Frame(root, bg = '#80c1ff',bd=5)
 frame1.place(relx=0.5, rely=0.25,relwidth=0.75,relheight=0.1, anchor='n')
 
 OptionList1 = {
-'Alluvial' : '0',
+'Aluvial' : '0',
 'Black': '1',
 'Desert': '2',
 'Laterite':'3',
