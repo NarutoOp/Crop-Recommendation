@@ -1,6 +1,0 @@
-black
-alluvial
-desert
-red
-lat
-moun
