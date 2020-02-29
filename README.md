@@ -1,4 +1,5 @@
-# Crop-recommend-ML
+# Crop-Recommendation
+
 [![HitCount](http://hits.dwyl.com/NarutoOp/Marks_Entry_Portal.svg)](http://hits.dwyl.com/NarutoOp/Crop-recommend-ML) [![Generic badge](https://img.shields.io/badge/Arpit-Gupta-1abc9c.svg)](https://github.com/NarutoOp)
 
 Crop recommend System on the basis of location .
