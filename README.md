@@ -1,6 +1,6 @@
 # Crop Recommendation ⚡️
 
-[![Visits Badge](https://badges.pufler.dev/visits/NarutoOp/doki_site)](https://badges.pufler.dev/visits/NarutoOp/doki_site) [![Generic badge](https://img.shields.io/badge/Arpit-Gupta-1abc9c.svg)](https://github.com/NarutoOp)
+[![Visits Badge](https://badges.pufler.dev/visits/NarutoOp/Crop-Recommendation)](https://badges.pufler.dev/visits/NarutoOp/Crop-Recommendation) [![Generic badge](https://img.shields.io/badge/Arpit-Gupta-1abc9c.svg)](https://github.com/NarutoOp)
 
 ## Description!
 
