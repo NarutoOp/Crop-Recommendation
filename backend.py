@@ -22,22 +22,23 @@ def pre(a,b):
 	Y = basic1[['Rice','Cotton','Sugarcane','Wheat','Millets','Cardamom','Ginger','Coconut']]	
 	classifier = DecisionTreeClassifier()
 	classifier.fit(X,Y)	
-	c = classifier.predict(Z)
-	d = cropname(c,a)
-	if len(d)==1:
-		final_str = '%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs.\nPredicted Year Cost : %s Rs.\n' %(str(d[0][0]),d[0][1],d[0][2],d[0][3])
-		return final_str
-	elif len(d) == 2:
-		final_str = '%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs. \nPredicted Year Cost : %s Rs.\n\n%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs.\nPredicted Year Cost : %s Rs.\n' %(str(d[0][0]),d[0][1],d[0][2],d[0][3],str(d[1][0]),d[1][1],d[1][2],d[1][3])
-		return final_str
-	elif len(d)==3:
-		final_str = '%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs. \nPredicted Year Cost : %s Rs.\n\n%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs.\nPredicted Year Cost : %s Rs.\n\n%s : \nPredicted Year Yield : %s Rs. \nPredicted Year Profit : %s Rs.\nPredicted Year Cost : %s Rs.\n' %(str(d[0][0]),d[0][1],d[0][2],d[0][3],str(d[1][0]),d[1][1],d[1][2],d[1][3],str(d[2][0]),d[2][1],d[2][2],d[2][3])
-		return final_str
-	else:
-		final_str = 'No crops available with this match'
-		return final_str
-
-
+	try:
+		c = classifier.predict(Z)
+		d = cropname(c,a)
+		if len(d)==1:
+			final_str = '%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs.\nPredicted Year Cost : %s Rs.\n' %(str(d[0][0]),d[0][1],d[0][2],d[0][3])
+			return final_str
+		elif len(d) == 2:
+			final_str = '%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs. \nPredicted Year Cost : %s Rs.\n\n%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs.\nPredicted Year Cost : %s Rs.\n' %(str(d[0][0]),d[0][1],d[0][2],d[0][3],str(d[1][0]),d[1][1],d[1][2],d[1][3])
+			return final_str
+		elif len(d)==3:
+			final_str = '%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs. \nPredicted Year Cost : %s Rs.\n\n%s : \nPredicted Year Yield : %s /hectare \nPredicted Year Profit : %s Rs.\nPredicted Year Cost : %s Rs.\n\n%s : \nPredicted Year Yield : %s Rs. \nPredicted Year Profit : %s Rs.\nPredicted Year Cost : %s Rs.\n' %(str(d[0][0]),d[0][1],d[0][2],d[0][3],str(d[1][0]),d[1][1],d[1][2],d[1][3],str(d[2][0]),d[2][1],d[2][2],d[2][3])
+			return final_str
+		else:
+			final_str = 'No crops available with this match'
+			return final_str
+	except:
+		return "No Data Found for such input's"
 
 def cropname(c,a):
 	import pandas as pd
