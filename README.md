@@ -14,3 +14,7 @@ Crop Recommendation System on the basis of location and soil type. The project i
 ⚡️ Python\
 ⚡️ Tkinter\
 ⚡️ Minimalistic UI
+
+## Steps to run
+  pip3 install -r requirements.txt
+  python gui.py
